@@ -1,10 +1,4 @@
-# 🌸 Mari Nails Spa — Plataforma Boutique & Sistema de Citas
-
-[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
-[![Composer](https://img.shields.io/badge/Composer-PSR--4-885630?style=for-the-badge&logo=composer&logoColor=white)](https://getcomposer.org/)
-[![Architecture](https://img.shields.io/badge/Architecture-MVC-D4AF37?style=for-the-badge&logo=blueprint&logoColor=white)](#-arquitectura-mvc)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Location](https://img.shields.io/badge/Barquisimeto-Estado%20Lara-red?style=for-the-badge&logo=googlemaps&logoColor=white)](https://maps.app.goo.gl/xGjdVrHkoanV1gEPA)
+#  Mari Nails Spa — Plataforma Boutique & Sistema de Citas
 
 Plataforma web boutique y sistema de agendamiento rápido desarrollada para **Mari Nails Spa**, salón especializado de alta gama dirigido por la especialista **Mariana Torres** (*Técnico Profesional de Salón • 8 Años de Evolución*) en **Barquisimeto, Estado Lara, Venezuela**.
 
@@ -12,7 +6,7 @@ Construida bajo una arquitectura **MVC (Modelo-Vista-Controlador)** limpia, modu
 
 ---
 
-## 🏛️ Arquitectura MVC
+##  Arquitectura MVC
 
 El proyecto sigue una separación rigurosa de responsabilidades para garantizar mantenibilidad, escalabilidad y facilidad de despliegue:
 
@@ -71,7 +65,7 @@ mari-nails-spa/
 
 ---
 
-## ✨ Características Destacadas
+##  Características Destacadas
 
 * **Arquitectura MVC con Composer (PSR-4)**: Código orientado a objetos, tipado estricto (`declare(strict_types=1);`), enrutamiento limpio y sin acoplamiento a frameworks pesados.
 * **Fotografías de Mariana Torres en Alta Resolución Nativa**: Extraídas en calidad de estudio profesional (hasta 3072 × 4096 px) destacando su uniforme boutique, instrumental de precisión y micromotor.
@@ -84,7 +78,7 @@ mari-nails-spa/
 
 ---
 
-## 🎨 Sistema de Diseño Boutique
+##  Sistema de Diseño Boutique
 
 | Token | Código HEX | Aplicación |
 | :--- | :--- | :--- |
@@ -100,7 +94,7 @@ mari-nails-spa/
 
 ---
 
-## 🚀 Requisitos e Instalación
+##  Requisitos e Instalación
 
 ### Requisitos Previos
 * **PHP**: 8.0 o superior (compatible con PHP 8.1 y 8.2).
@@ -142,7 +136,7 @@ http://localhost:8000
 
 ---
 
-## 📡 Endpoints de la Aplicación
+##  Endpoints de la Aplicación
 
 | Método | Ruta | Controlador / Acción | Descripción |
 | :--- | :--- | :--- | :--- |
@@ -152,7 +146,7 @@ http://localhost:8000
 
 ---
 
-## 📤 Instrucciones para Subir a GitHub
+##  Instrucciones para Subir a GitHub
 
 Si aún no has inicializado el repositorio Git en este proyecto, sigue estos pasos desde la terminal dentro de `C:\xampp\htdocs\mari-nails-spa`:
 
@@ -181,7 +175,7 @@ git push -u origin main
 
 ---
 
-## 👩‍💼 Créditos & Autoría
+##  Créditos & Autoría
 
 * **Especialista & Fundadora**: Mariana Torres — *Mari Nails Spa*
 * **Ubicación**: Barquisimeto, Estado Lara, Venezuela.
@@ -190,6 +184,6 @@ git push -u origin main
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto está bajo la Licencia **MIT**. Consulta el archivo `LICENSE` para más información.
