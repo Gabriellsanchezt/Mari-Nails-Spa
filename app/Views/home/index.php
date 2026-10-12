@@ -120,7 +120,7 @@
       </div>
 
       <form id="quickBookingForm">
-        <div class="booking-form-grid" style="grid-template-columns: 1fr 1.4fr 1fr;">
+        <div class="booking-form-grid">
           
           <!-- Nombre de la clienta -->
           <div class="form-group">
@@ -161,7 +161,7 @@
             <h5>Tu solicitud:</h5>
             <p>Deseo: <strong id="summaryRequestText">Diseño personalizado</strong> &bull; Día tentativo: <strong id="summaryDayText">Lunes (Tentativo)</strong></p>
           </div>
-          <button type="button" id="sendBookingWhatsApp" class="btn btn-whatsapp" style="padding: 0.9rem 2rem;">
+          <button type="button" id="sendBookingWhatsApp" class="btn btn-whatsapp">
             <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Confirmar vía WhatsApp
           </button>
         </div>

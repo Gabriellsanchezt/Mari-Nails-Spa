@@ -19,6 +19,11 @@
         <li><a href="#galeria" class="nav-link">Galería de Diseños</a></li>
         <li><a href="#especialista" class="nav-link"><?= e(config('specialist.name')) ?></a></li>
         <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+        <li class="mobile-nav-cta">
+          <a href="#reserva" class="btn btn-gold btn-sm" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-calendar-plus"></i> Agendar Cita
+          </a>
+        </li>
       </ul>
     </nav>
 

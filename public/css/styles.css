@@ -351,6 +351,10 @@ button {
   border-radius: var(--radius-sm);
 }
 
+.mobile-nav-cta {
+  display: none;
+}
+
 /* --- Hero Section --- */
 .hero-section {
   position: relative;
@@ -875,8 +879,8 @@ button {
 
 .booking-form-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: 1.25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -1778,8 +1782,15 @@ button {
   color: var(--color-gold-dark);
 }
 
-/* --- Media Queries / Responsive --- */
+/* --- Media Queries / Responsive Modern System --- */
+
+/* Adaptabilidad para Tablets & Laptops Medianas */
 @media (max-width: 1024px) {
+  .hero-section {
+    padding-top: 115px;
+    padding-bottom: 55px;
+    min-height: auto;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1787,6 +1798,7 @@ button {
   }
   .hero-content {
     margin: 0 auto;
+    max-width: 720px;
   }
   .hero-cta-group {
     justify-content: center;
@@ -1794,72 +1806,444 @@ button {
   .hero-trust-bar {
     justify-content: center;
   }
-  .hero-image-card img {
-    height: 420px;
+  .hero-visual-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
   }
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-image-card img {
+    height: 440px;
   }
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   .specialist-grid {
     grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+  .specialist-image-card {
+    max-width: 480px;
+    margin: 0 auto 3rem auto;
+    width: 100%;
+  }
+  .specialist-img-container img {
+    height: 440px;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   .location-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .footer-top-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
+/* Adaptabilidad Intermedia para el Formulario de Reserva */
+@media (max-width: 860px) {
+  .booking-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+}
+
+/* Adaptabilidad para Tablets Pequeñas y Móviles Horizontales */
 @media (max-width: 768px) {
+  .header-navbar {
+    background: rgba(255, 255, 255, 0.98);
+  }
+  .navbar-inner {
+    height: 72px;
+  }
   .mobile-toggle-btn {
     display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: var(--color-white);
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    box-shadow: var(--shadow-md);
-    border-bottom: 1px solid var(--color-rose-border);
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: clip-path 0.4s ease-in-out;
-    gap: 1.5rem;
-  }
-  .nav-links.active {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   .navbar-actions .btn {
     display: none;
   }
+  .mobile-nav-cta {
+    display: block;
+    width: 100%;
+    padding-top: 0.5rem;
+  }
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.5rem 1.5rem 2.5rem;
+    box-shadow: 0 16px 36px rgba(58, 46, 57, 0.16);
+    border-bottom: 1px solid var(--color-rose-border);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 0.25rem;
+    z-index: 999;
+  }
+  .nav-links.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .nav-link {
+    font-size: 1.02rem;
+    font-weight: 600;
+    padding: 0.85rem 0.5rem;
+    display: block;
+    border-bottom: 1px solid rgba(245, 230, 232, 0.7);
+  }
+  .nav-link::after {
+    display: none;
+  }
+
+  /* Tipografía fluida y espaciados de secciones */
+  .section-title {
+    font-size: clamp(1.75rem, 5vw, 2.15rem);
+  }
+  .section-subtitle {
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+  }
+  .services-section,
+  .gallery-section,
+  .specialist-section,
+  .testimonials-section,
+  .faq-section,
+  .location-section {
+    padding: 4rem 0;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding-top: 105px;
+    padding-bottom: 45px;
+  }
   .hero-title {
-    font-size: 2.35rem;
+    font-size: clamp(1.9rem, 6.5vw, 2.5rem);
   }
-  .services-grid {
-    grid-template-columns: 1fr;
+  .hero-subtitle {
+    font-size: 1.02rem;
+    margin-bottom: 1.75rem;
   }
-  .benefits-grid {
-    grid-template-columns: 1fr;
+  .hero-image-card img {
+    height: 380px;
   }
-  .booking-form-grid {
-    grid-template-columns: 1fr;
-  }
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-top-grid {
-    grid-template-columns: 1fr;
+  .hero-gold-border-decor {
+    top: -8px;
+    right: -8px;
   }
   .floating-pill {
-    display: none; /* Mejor lectura en pantallas pequeñas */
+    display: none;
+  }
+
+  /* Banner de atención exclusiva previa cita */
+  .services-note-banner-centered {
+    padding: 2.25rem 1.5rem;
+  }
+  .notice-icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .notice-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  .notice-text {
+    font-size: 0.96rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Asistente de Reserva */
+  .quick-booking-section {
+    padding: 3.5rem 0;
+  }
+  .booking-card-wrapper {
+    padding: 1.85rem 1.25rem;
+  }
+  .booking-summary-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.2rem 1.1rem;
+  }
+  #sendBookingWhatsApp {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Galería Instagram Responsive (2 columnas nítidas) */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .services-filter-tabs {
+    gap: 0.45rem;
+    margin-bottom: 1.8rem;
+  }
+  .tab-btn {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* Especialista */
+  .specialist-img-container img {
+    height: 380px;
+  }
+  .specialist-badge-float {
+    bottom: -15px;
+    left: 15px;
+    right: 15px;
+    padding: 0.9rem 1.2rem;
+  }
+  .specialist-quote {
+    font-size: 1.15rem;
+  }
+
+  /* Testimonios */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .testimonial-card {
+    padding: 1.75rem 1.4rem;
+  }
+
+  /* FAQ */
+  .faq-question {
+    padding: 1.1rem 1.25rem;
+    font-size: 0.94rem;
+  }
+
+  /* Ubicación & Mapa */
+  .location-info-card {
+    padding: 1.85rem 1.25rem;
+  }
+  .location-map-container {
+    min-height: 330px;
+    height: 330px;
+  }
+  .location-map-container iframe {
+    min-height: 330px;
+    height: 330px;
+  }
+  .map-floating-action {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 0.75rem 1rem;
+  }
+
+  /* Prevenir zoom automático en Safari iOS */
+  .form-control,
+  input[type="text"],
+  select {
+    font-size: 16px;
   }
 }
+
+/* Adaptabilidad para Smartphones (Pantallas angostas <= 576px) */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding-top: 96px;
+    padding-bottom: 35px;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.2rem);
+    line-height: 1.2;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.92rem;
+  }
+  .hero-image-card img {
+    height: 320px;
+  }
+  .hero-gold-border-decor {
+    top: -6px;
+    right: -6px;
+  }
+
+  /* Beneficios en 1 columna */
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+  .benefit-card {
+    gap: 0.85rem;
+  }
+  .benefit-icon-box {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    font-size: 1.15rem;
+  }
+
+  /* Aviso de cita */
+  .services-note-banner-centered {
+    padding: 1.75rem 1rem;
+  }
+  .notice-action .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.94rem;
+    padding: 0.85rem 1.25rem;
+  }
+
+  /* Booking Card */
+  .booking-card-wrapper {
+    padding: 1.4rem 0.95rem;
+  }
+
+  /* Pilares Especialista */
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .specialist-badge-float {
+    left: 10px;
+    right: 10px;
+    padding: 0.75rem 1rem;
+  }
+  .specialist-badge-float h4 {
+    font-size: 1.1rem;
+  }
+  .specialist-badge-float i {
+    font-size: 1.6rem;
+  }
+  .specialist-bio .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mapa */
+  .map-floating-action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    text-align: center;
+  }
+  .map-floating-action .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer en 1 columna */
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    text-align: center;
+  }
+  .footer-socials {
+    justify-content: center;
+  }
+  .footer-links-list a {
+    justify-content: center;
+  }
+
+  /* Modal Rápido */
+  .modal-content-box {
+    padding: 1.75rem 1.15rem;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+  .modal-close-btn {
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  /* WhatsApp Flotante Móvil */
+  .floating-whatsapp-container {
+    bottom: 16px;
+    right: 16px;
+  }
+  .floating-whatsapp-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 1.75rem;
+  }
+  .whatsapp-chat-bubble {
+    max-width: 230px;
+    font-size: 0.78rem;
+    padding: 0.75rem 0.95rem;
+  }
+
+  /* Lightbox Móvil */
+  .lightbox-prev-btn {
+    left: -5px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+  .lightbox-next-btn {
+    right: -5px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+  .lightbox-close-btn {
+    top: -44px;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
+/* Adaptabilidad para Dispositivos Muy Compactos (<= 380px) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+  .hero-title {
+    font-size: 1.65rem;
+  }
+  .hero-image-card img {
+    height: 270px;
+  }
+  .gallery-grid {
+    gap: 0.5rem;
+  }
+  .specialist-img-container img {
+    height: 290px;
+  }
+  .whatsapp-chat-bubble {
+    display: none !important;
+  }
+}
+

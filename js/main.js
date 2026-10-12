@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerNavbar = document.querySelector('.header-navbar');
   const mobileToggleBtn = document.querySelector('.mobile-toggle-btn');
   const navLinks = document.querySelector('.nav-links');
-  const navLinksItems = document.querySelectorAll('.nav-link');
+  const navLinksItems = document.querySelectorAll('.nav-links a');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
