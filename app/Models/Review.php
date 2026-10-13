@@ -23,7 +23,7 @@ class Review
             [
                 'id'       => 2,
                 'name'     => 'Camila Rodríguez',
-                'role'     => 'Pedicura Spa',
+                'role'     => 'Cliente habitual',
                 'initials' => 'CR',
                 'stars'    => 5,
                 'comment'  => 'La Pedicura Spa es una maravilla. El masaje, el trato de Mariana y el café que te ofrece hacen que la experiencia sea de desconexión total. Salí sintiendo que caminaba en las nubes.',
@@ -31,7 +31,7 @@ class Review
             [
                 'id'       => 3,
                 'name'     => 'Sofía Giménez',
-                'role'     => 'Nail Art de Autor',
+                'role'     => 'Cliente habitual',
                 'initials' => 'SG',
                 'stars'    => 5,
                 'comment'  => 'Buscaba a alguien que supiera hacer diseños en tendencia y no solo cosas básicas. Mariana recreó exactamente el diseño de Pinterest que le llevé para mi evento. ¡10/10 recomendada!',

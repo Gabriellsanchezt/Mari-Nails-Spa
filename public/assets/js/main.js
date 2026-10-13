@@ -109,24 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
       summaryRequestText.textContent = bookingRequestInput.value.trim() || 'Diseño personalizado';
     }
     if (summaryDayText && bookingDaySelect) {
-      const dayVal = bookingDaySelect.value || 'Lunes';
-      const autoDate = getUpcomingDateForDay(dayVal);
-      summaryDayText.textContent = autoDate ? `${dayVal} (${autoDate} - Tentativo)` : `${dayVal} (Tentativo)`;
+      const dayVal = bookingDaySelect.value ? bookingDaySelect.value.trim() : '';
+      if (!dayVal) {
+        summaryDayText.textContent = 'Por coordinar (Tentativo)';
+      } else {
+        const autoDate = getUpcomingDateForDay(dayVal);
+        summaryDayText.textContent = autoDate ? `${dayVal} (${autoDate} - Tentativo)` : `${dayVal} (Tentativo)`;
+      }
     }
   }
 
-  // Pre-seleccionar día sugerido según la fecha actual
-  const dayNamesByIndex = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-  const nowForInit = new Date();
-  let defaultDayIndex = nowForInit.getDay();
-  if (nowForInit.getHours() >= 18) {
-    defaultDayIndex = (defaultDayIndex + 1) % 7;
+  // --- Limpieza de formularios en carga / recarga para evitar caché de reserva previa ---
+  function resetBookingFields() {
+    const quickForm = document.getElementById('quickBookingForm');
+    const modalForm = document.getElementById('modalBookingForm');
+    if (quickForm && typeof quickForm.reset === 'function') quickForm.reset();
+    if (modalForm && typeof modalForm.reset === 'function') modalForm.reset();
+
+    if (bookingNameInput) bookingNameInput.value = '';
+    if (bookingRequestInput) bookingRequestInput.value = '';
+    if (bookingDaySelect) bookingDaySelect.value = '';
+
+    const modalName = document.getElementById('modalClientName');
+    const modalReq = document.getElementById('modalClientRequest');
+    const modalDay = document.getElementById('modalClientDay');
+    if (modalName) modalName.value = '';
+    if (modalReq) modalReq.value = '';
+    if (modalDay) modalDay.value = '';
+
+    updateBookingSummary();
   }
-  if (defaultDayIndex === 0) defaultDayIndex = 1; // Si es domingo, sugerir lunes
-  const defaultDayName = dayNamesByIndex[defaultDayIndex];
-  if (bookingDaySelect) bookingDaySelect.value = defaultDayName;
-  const modalClientDayInput = document.getElementById('modalClientDay');
-  if (modalClientDayInput) modalClientDayInput.value = defaultDayName;
+
+  // Ejecutar limpieza al iniciar y en el evento pageshow (evita restauración de caché del navegador / bfcache)
+  resetBookingFields();
+  window.addEventListener('pageshow', resetBookingFields);
 
   if (bookingRequestInput) {
     bookingRequestInput.addEventListener('input', updateBookingSummary);
@@ -141,11 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const rawName = bookingNameInput && bookingNameInput.value.trim() !== '' ? bookingNameInput.value.trim() : '';
       const name = rawName || '[Nombre]';
       const request = bookingRequestInput && bookingRequestInput.value.trim() !== '' ? bookingRequestInput.value.trim() : 'Diseño personalizado';
-      const day = bookingDaySelect ? bookingDaySelect.value : 'Lunes';
-      const autoDate = getUpcomingDateForDay(day);
-      const dateText = autoDate ? ` (${autoDate})` : '';
+      const day = bookingDaySelect && bookingDaySelect.value ? bookingDaySelect.value.trim() : '';
 
-      const customMessage = `¡Hola Mariana!\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      let dayClause = '';
+      if (day) {
+        const autoDate = getUpcomingDateForDay(day);
+        const dateText = autoDate ? ` (${autoDate})` : '';
+        dayClause = ` Mi día preferido (tentativo) seria el dia: ${day}${dateText}.`;
+      }
+
+      const customMessage = `¡Hola Mariana!\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}.${dayClause} ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
       window.open(whatsappUrl, '_blank');
@@ -375,16 +396,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const rawName = document.getElementById('modalClientName') ? document.getElementById('modalClientName').value.trim() : '';
       const clientName = rawName || '[Nombre]';
       const request = document.getElementById('modalClientRequest') ? document.getElementById('modalClientRequest').value.trim() : 'Diseño personalizado';
-      const day = document.getElementById('modalClientDay') ? document.getElementById('modalClientDay').value : 'Lunes';
-      const autoDate = getUpcomingDateForDay(day);
-      const dateText = autoDate ? ` (${autoDate})` : '';
+      const modalDayInput = document.getElementById('modalClientDay');
+      const day = modalDayInput && modalDayInput.value ? modalDayInput.value.trim() : '';
 
-      const msg = `¡Hola Mariana!\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      let dayClause = '';
+      if (day) {
+        const autoDate = getUpcomingDateForDay(day);
+        const dateText = autoDate ? ` (${autoDate})` : '';
+        dayClause = ` Mi día preferido (tentativo) seria el dia: ${day}${dateText}.`;
+      }
+
+      const msg = `¡Hola Mariana!\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}.${dayClause} ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const targetUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
       window.open(targetUrl, '_blank');
 
       if (modalBackdrop) modalBackdrop.classList.remove('open');
+      resetBookingFields();
     });
   }
 

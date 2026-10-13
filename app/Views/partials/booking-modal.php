@@ -9,20 +9,21 @@
       <p style="font-size: 0.88rem; color: var(--color-text-secondary);">Atención personalizada con <?= e(config('specialist.name')) ?> en Barquisimeto.</p>
     </div>
 
-    <form id="modalBookingForm">
+    <form id="modalBookingForm" autocomplete="off">
       <div class="form-group" style="margin-bottom: 1rem;">
         <label for="modalClientName"><i class="fa-regular fa-user"></i> Tu Nombre Completo</label>
-        <input type="text" id="modalClientName" class="form-control" placeholder="Ej. Camila Silva" required>
+        <input type="text" id="modalClientName" class="form-control" placeholder="Ej. Camila Silva" autocomplete="off" required>
       </div>
 
       <div class="form-group" style="margin-bottom: 1rem;">
         <label for="modalClientRequest"><i class="fa-solid fa-wand-magic-sparkles"></i> ¿Qué te gustaría hacerte?</label>
-        <input type="text" id="modalClientRequest" class="form-control" placeholder="Ej. Manicura semi, nivelación, dual system, pedicura..." required>
+        <input type="text" id="modalClientRequest" class="form-control" placeholder="Ej. Manicura semi, nivelación, dual system, pedicura..." autocomplete="off" required>
       </div>
 
       <div class="form-group" style="margin-bottom: 1rem;">
         <label for="modalClientDay"><i class="fa-regular fa-calendar"></i> Día Preferido <em>(Tentativo)</em></label>
-        <select id="modalClientDay" class="form-control">
+        <select id="modalClientDay" class="form-control" autocomplete="off">
+          <option value="" selected>Selecciona un día preferido...</option>
           <option value="Lunes">Lunes</option>
           <option value="Martes">Martes</option>
           <option value="Miércoles">Miércoles</option>

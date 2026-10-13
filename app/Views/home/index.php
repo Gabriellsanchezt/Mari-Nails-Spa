@@ -119,25 +119,26 @@
         </p>
       </div>
 
-      <form id="quickBookingForm">
+      <form id="quickBookingForm" autocomplete="off">
         <div class="booking-form-grid">
           
           <!-- Nombre de la clienta -->
           <div class="form-group">
             <label for="bookingName"><i class="fa-regular fa-user"></i> Tu Nombre</label>
-            <input type="text" id="bookingName" class="form-control" placeholder="Ej. Andrea Mendoza" required>
+            <input type="text" id="bookingName" class="form-control" placeholder="Ej. Andrea Mendoza" autocomplete="off" required>
           </div>
 
           <!-- Qué quieren realmente (Texto Libre) -->
           <div class="form-group">
             <label for="bookingRequest"><i class="fa-solid fa-wand-magic-sparkles"></i> ¿Qué te gustaría hacerte?</label>
-            <input type="text" id="bookingRequest" class="form-control" placeholder="Ej. Manicura semi, kapping de polygel, soft gel, pedicura..." required>
+            <input type="text" id="bookingRequest" class="form-control" placeholder="Ej. Manicura semi, kapping de polygel, soft gel, pedicura..." autocomplete="off" required>
           </div>
 
           <!-- Día de Preferencia (Tentativo) -->
           <div class="form-group">
             <label for="bookingDay"><i class="fa-regular fa-calendar"></i> Día Preferido <em>(Tentativo)</em></label>
-            <select id="bookingDay" class="form-control">
+            <select id="bookingDay" class="form-control" autocomplete="off">
+              <option value="" selected>Selecciona un día preferido...</option>
               <option value="Lunes">Lunes</option>
               <option value="Martes">Martes</option>
               <option value="Miércoles">Miércoles</option>
@@ -159,7 +160,7 @@
         <div class="booking-summary-box">
           <div class="summary-details">
             <h5>Tu solicitud:</h5>
-            <p>Deseo: <strong id="summaryRequestText">Diseño personalizado</strong> &bull; Día tentativo: <strong id="summaryDayText">Lunes (Tentativo)</strong></p>
+            <p>Deseo: <strong id="summaryRequestText">Diseño personalizado</strong> &bull; Día tentativo: <strong id="summaryDayText">Por coordinar (Tentativo)</strong></p>
           </div>
           <button type="button" id="sendBookingWhatsApp" class="btn btn-whatsapp">
             <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Confirmar vía WhatsApp

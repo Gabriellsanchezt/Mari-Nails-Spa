@@ -925,6 +925,10 @@ button {
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
+select.form-control option[value=""] {
+  color: var(--color-text-secondary);
+}
+
 .booking-summary-box {
   background: var(--color-rose-subtle);
   border-radius: var(--radius-md);

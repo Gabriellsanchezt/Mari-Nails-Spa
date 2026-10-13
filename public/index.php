@@ -16,6 +16,9 @@ if (!file_exists($autoloader)) {
 require_once $autoloader;
 
 header('Content-Type: text/html; charset=UTF-8');
+header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: Wed, 11 Jan 1984 05:00:00 GMT');
 
 use App\Core\Request;
 use App\Core\Router;
