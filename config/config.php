@@ -23,8 +23,6 @@ return [
         'images'      => [
             'hero'       => 'images/mariana-shoot-4.jpg',
             'specialist' => 'images/mariana-shoot-1.jpg',
-            'warm'       => 'images/mariana-shoot-2.jpg',
-            'precision'  => 'images/mariana-shoot-3.jpg',
         ],
     ],
 

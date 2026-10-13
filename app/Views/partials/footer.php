@@ -42,11 +42,12 @@
       <div>
         <h4 class="footer-col-title">Especialidades</h4>
         <ul class="footer-links-list">
-          <li><a href="#galeria">Uñas Acrílicas & Esculpidas</a></li>
-          <li><a href="#galeria">Nail Art & Efectos Especiales</a></li>
-          <li><a href="#galeria">Esmaltado Semipermanente</a></li>
-          <li><a href="#galeria">Kapping & Baño Protector</a></li>
-          <li><a href="#galeria">Pedicura & Manicura Rusa</a></li>
+          <li><a href="#galeria">Manicura semi</a></li>
+          <li><a href="#galeria">Pedicura</a></li>
+          <li><a href="#galeria">Nivelación</a></li>
+          <li><a href="#galeria">Kapping de polygel & Soft gel</a></li>
+          <li><a href="#galeria">Dual system & Reparación</a></li>
+          <li><a href="#galeria">Retiro de sistemas y semi</a></li>
         </ul>
       </div>
 

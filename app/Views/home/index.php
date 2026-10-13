@@ -131,7 +131,7 @@
           <!-- Qué quieren realmente (Texto Libre) -->
           <div class="form-group">
             <label for="bookingRequest"><i class="fa-solid fa-wand-magic-sparkles"></i> ¿Qué te gustaría hacerte?</label>
-            <input type="text" id="bookingRequest" class="form-control" placeholder="Ej. Acrílicas baby boomer, pedicura spa, retiro..." required>
+            <input type="text" id="bookingRequest" class="form-control" placeholder="Ej. Manicura semi, kapping de polygel, soft gel, pedicura..." required>
           </div>
 
           <!-- Día de Preferencia (Tentativo) -->
@@ -193,15 +193,30 @@
       </div>
     </div>
 
-    <!-- Grid de Galería Limpio con Lightbox -->
+    <!-- Grid de Portafolio & Servicios -->
     <div class="gallery-grid">
       <?php foreach ($gallery as $item): ?>
-        <div class="gallery-item" data-category="<?= e($item['category']) ?>" data-lightbox-src="<?= asset($item['image']) ?>" role="button" tabindex="0" aria-label="Ampliar fotografía de diseño de uñas">
-          <img src="<?= asset($item['image']) ?>" alt="<?= e($item['alt']) ?>">
-          <div class="gallery-expand-hint">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        <?php if (!empty($item['image'])): ?>
+          <div class="gallery-item" data-category="<?= e($item['category']) ?>" data-lightbox-src="<?= asset($item['image']) ?>" role="button" tabindex="0" aria-label="Ampliar fotografía de <?= e($item['name']) ?>">
+            <img src="<?= asset($item['image']) ?>" alt="<?= e($item['alt']) ?>">
+            <div class="gallery-expand-hint">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
           </div>
-        </div>
+        <?php else: ?>
+          <div class="gallery-item gallery-placeholder-card" data-category="<?= e($item['category']) ?>" role="button" tabindex="0" aria-label="Seleccionar servicio de <?= e($item['name']) ?>">
+            <div class="placeholder-card-inner">
+              <div class="placeholder-icon-box">
+                <i class="<?= e($item['icon']) ?>"></i>
+              </div>
+              <h4 class="placeholder-title"><?= e($item['name']) ?></h4>
+              <p class="placeholder-desc"><?= e($item['description']) ?></p>
+              <div class="placeholder-footer">
+                <span class="placeholder-badge"><i class="fa-solid fa-clock"></i> Fotos oficiales en preparación</span>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
       <?php endforeach; ?>
     </div>
 

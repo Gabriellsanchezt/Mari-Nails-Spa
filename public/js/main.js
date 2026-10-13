@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       galleryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
         if (filterCategory === 'all' || itemCategory === filterCategory) {
-          item.style.display = 'block';
+          item.style.display = '';
           item.style.opacity = '1';
         } else {
           item.style.display = 'none';
@@ -201,11 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function getVisibleGalleryImages() {
     return Array.from(document.querySelectorAll('.gallery-item'))
       .filter(item => item.style.display !== 'none')
-      .map(item => item.getAttribute('data-lightbox-src') || (item.querySelector('img') ? item.querySelector('img').src : ''));
+      .map(item => item.getAttribute('data-lightbox-src') || (item.querySelector('img') ? item.querySelector('img').src : ''))
+      .filter(src => !!src);
   }
 
   function openLightbox(src) {
-    if (!lightboxModal || !lightboxImg) return;
+    if (!lightboxModal || !lightboxImg || !src) return;
     activeGalleryImages = getVisibleGalleryImages();
     const idx = activeGalleryImages.indexOf(src);
     currentImageIndex = idx !== -1 ? idx : 0;
@@ -234,16 +235,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   galleryItems.forEach(item => {
-    const triggerOpen = () => {
-      const src = item.getAttribute('data-lightbox-src') || (item.querySelector('img') ? item.querySelector('img').src : '');
-      if (src) openLightbox(src);
+    const triggerAction = () => {
+      const src = item.getAttribute('data-lightbox-src');
+      if (src) {
+        openLightbox(src);
+      } else {
+        const titleEl = item.querySelector('.placeholder-title');
+        if (titleEl && bookingRequestInput) {
+          bookingRequestInput.value = titleEl.textContent.trim();
+          updateBookingSummary();
+          const reservaSection = document.getElementById('reserva');
+          if (reservaSection) {
+            reservaSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
     };
 
-    item.addEventListener('click', triggerOpen);
+    item.addEventListener('click', triggerAction);
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        triggerOpen();
+        triggerAction();
       }
     });
   });

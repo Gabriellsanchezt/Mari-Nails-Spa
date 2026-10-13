@@ -17,7 +17,7 @@
 
       <div class="form-group" style="margin-bottom: 1rem;">
         <label for="modalClientRequest"><i class="fa-solid fa-wand-magic-sparkles"></i> ¿Qué te gustaría hacerte?</label>
-        <input type="text" id="modalClientRequest" class="form-control" placeholder="Ej. Acrílicas almendra, esmaltado semipermanente, retiro..." required>
+        <input type="text" id="modalClientRequest" class="form-control" placeholder="Ej. Manicura semi, nivelación, dual system, pedicura..." required>
       </div>
 
       <div class="form-group" style="margin-bottom: 1rem;">
