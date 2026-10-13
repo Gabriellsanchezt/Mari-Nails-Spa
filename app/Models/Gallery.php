@@ -14,8 +14,8 @@ class Gallery
         return [
             [
                 'id'          => 1,
-                'name'        => 'Semipermanente',
-                'category'    => 'manicura-semi semipermanente',
+                'name'        => 'Manicura semi',
+                'category'    => 'manicura-semi',
                 'icon'        => 'fa-solid fa-hand-sparkles',
                 'image'       => 'assets/img/Semipermanente.jpeg',
                 'alt'         => 'Manicura semipermanente en tono vinotinto con micropuntos en Mari Nails Spa',
@@ -59,20 +59,20 @@ class Gallery
             ],
             [
                 'id'          => 6,
-                'name'        => 'Encapsulados',
-                'category'    => 'dual-system encapsulados',
+                'name'        => 'Dual system',
+                'category'    => 'dual-system',
                 'icon'        => 'fa-solid fa-gem',
                 'image'       => 'assets/img/Encapsulados.jpeg',
-                'alt'         => 'Diseño de uñas encapsuladas con destellos y foil holográfico en Mari Nails Spa',
-                'description' => 'Moldeado rápido con curvatura perfecta, destellos holográficos y encapsulado de lujo.',
+                'alt'         => 'Estructura Dual System con encapsulado holográfico en Mari Nails Spa',
+                'description' => 'Moldeado rápido con curvatura perfecta, destellos holográficos y técnica Dual System.',
             ],
             [
                 'id'          => 7,
-                'name'        => 'Relieves y Diseños 3D',
-                'category'    => 'soft-gel relieves-3d',
+                'name'        => 'Soft gel',
+                'category'    => 'soft-gel',
                 'icon'        => 'fa-solid fa-feather-pointed',
                 'image'       => 'assets/img/Relieves y diseños 3d.jpeg',
-                'alt'         => 'Relieves florales tridimensionales y texturas en Mari Nails Spa',
+                'alt'         => 'Sistema Soft Gel con relieves florales tridimensionales y texturas en Mari Nails Spa',
                 'description' => 'Extensiones ultraligeras con arte en relieve tridimensional hecho a mano.',
             ],
             [
@@ -121,10 +121,8 @@ class Gallery
     {
         return [
             ['slug' => 'all',                  'name' => 'Todos'],
-            ['slug' => 'nivelacion',           'name' => 'Nivelación'],
             ['slug' => 'manicura-semi',        'name' => 'Manicura semi'],
-            ['slug' => 'encapsulados',         'name' => 'Encapsulados'],
-            ['slug' => 'relieves-3d',          'name' => 'Relieves 3D'],
+            ['slug' => 'nivelacion',           'name' => 'Nivelación'],
             ['slug' => 'dual-system',          'name' => 'Dual system'],
             ['slug' => 'soft-gel',             'name' => 'Soft gel'],
             ['slug' => 'kapping-polygel',      'name' => 'Kapping de polygel'],
