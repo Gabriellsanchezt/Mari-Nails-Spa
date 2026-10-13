@@ -67,10 +67,25 @@ if (!function_exists('base_url')) {
 if (!function_exists('asset')) {
     /**
      * Retorna la ruta absoluta al recurso estático (css, js, imágenes)
+     * Resuelve hacia la estructura canónica assets/ (img, css, js)
      */
     function asset(string $path): string
     {
-        $path = ltrim($path, '/');
+        $path = trim($path, '/');
+
+        // Mapear rutas estándar a la estructura organizada assets/
+        if (!str_starts_with($path, 'assets/')) {
+            if (str_starts_with($path, 'img/')) {
+                $path = 'assets/' . $path;
+            } elseif (str_starts_with($path, 'images/')) {
+                $path = 'assets/img/' . substr($path, 7);
+            } elseif (str_starts_with($path, 'css/')) {
+                $path = 'assets/' . $path;
+            } elseif (str_starts_with($path, 'js/')) {
+                $path = 'assets/' . $path;
+            }
+        }
+
         $base = base_url();
         if ($base === '' || $base === '/') {
             return '/' . $path;

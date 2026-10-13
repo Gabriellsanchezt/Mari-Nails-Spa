@@ -3,7 +3,7 @@
     <!-- Logo de la Marca -->
     <a href="#inicio" class="brand-logo" aria-label="<?= e(config('app.name')) ?> - Inicio">
       <div class="brand-icon-wrapper" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="<?= asset('images/favicon-64.png') ?>" alt="Logo <?= e(config('app.name')) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        <img src="<?= asset('assets/img/favicon-64.png') ?>" alt="Logo <?= e(config('app.name')) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
       </div>
       <div class="brand-name">
         Mari Nails <span>Spa Boutique</span>

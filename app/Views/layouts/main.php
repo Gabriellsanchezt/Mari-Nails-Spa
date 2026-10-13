@@ -25,14 +25,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Favicon / Logotipo Oficial de la Pestaña -->
-  <link rel="icon" type="image/png" sizes="32x32" href="<?= asset('images/favicon-32.png') ?>">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?= asset('images/favicon-16.png') ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= asset('assets/img/favicon-32.png') ?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= asset('assets/img/favicon-16.png') ?>">
   <link rel="icon" type="image/png" href="<?= asset('favicon.png') ?>">
   <link rel="apple-touch-icon" sizes="180x180" href="<?= asset('apple-touch-icon.png') ?>">
   <link rel="shortcut icon" href="<?= asset('favicon.ico') ?>">
 
   <!-- Estilos Custom -->
-  <link rel="stylesheet" href="<?= asset('css/styles.css') ?>">
+  <link rel="stylesheet" href="<?= asset('assets/css/styles.css') ?>">
 </head>
 <body>
 
@@ -67,6 +67,6 @@
   <?php \App\Core\View::partial('partials/lightbox'); ?>
 
   <!-- Scripts -->
-  <script src="<?= asset('js/main.js') ?>"></script>
+  <script src="<?= asset('assets/js/main.js') ?>"></script>
 </body>
 </html>

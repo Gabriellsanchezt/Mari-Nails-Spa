@@ -42,15 +42,25 @@ mari-nails-spa/
 │           ├── lightbox.php             # Visor interactivo en pantalla completa
 │           └── navbar.php               # Barra de navegación responsive
 │
+├── assets/                              # Recursos estáticos del proyecto (raíz y desarrollo)
+│   ├── css/
+│   │   └── styles.css                   # Sistema de diseño boutique y responsive
+│   ├── img/                             # Fotografías oficiales, logo y favicons
+│   └── js/
+│       └── main.js                      # Control del Lightbox, modales y WhatsApp
+│
 ├── config/
 │   └── config.php                       # Configuración central (WhatsApp, Maps, Instagram)
 │
 ├── public/                              # Raíz pública del servidor web (Document Root)
-│   ├── css/
-│   │   └── styles.css                   # Sistema de diseño boutique y responsive
-│   ├── images/                          # Fotografías de estudio y portafolio en HD
-│   ├── js/
-│   │   └── main.js                      # Control del Lightbox, formularios y WhatsApp
+│   ├── assets/                          # Recursos estáticos servidos directamente
+│   │   ├── css/
+│   │   │   └── styles.css
+│   │   ├── img/                         # Imágenes optimizadas para producción
+│   │   └── js/
+│   │       └── main.js
+│   ├── favicon.ico                      # Favicon clásico para navegadores
+│   ├── favicon.png                      # Favicon PNG
 │   ├── favicon.svg                      # Isotipo boutique vectorial
 │   ├── .htaccess                        # Reglas de reescritura Apache para public
 │   └── index.php                        # Front Controller / Punto de entrada único

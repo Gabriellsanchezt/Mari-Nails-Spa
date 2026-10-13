@@ -10,8 +10,8 @@ return [
         'description' => 'Salón boutique especializado en manicura rusa, pedicura spa y sistemas de uñas esculpidas en Barquisimeto por Mariana Torres. Atención exclusiva previa cita.',
         'base_url'    => null, // Auto-detectado dinámicamente
         'year'        => date('Y'),
-        'logo'        => 'images/mari-nails-logo-instagram.jpg',
-        'favicon'     => 'favicon.png',
+        'logo'        => 'assets/img/mari-nails-logo-instagram.jpg',
+        'favicon'     => 'assets/img/favicon-64.png',
     ],
 
     'specialist' => [
@@ -21,8 +21,8 @@ return [
         'quote'       => 'Este arte no solo me dio una profesión, me regaló confianza, paciencia y a clientas maravillosas que hoy son parte de mi corazón.',
         'bio'         => 'A lo largo de 8 años de evolución, aprendizaje constante y dedicación en el arte de las uñas, Mariana ha consolidado en Barquisimeto un espacio boutique donde la técnica y la calidez van de la mano. En Mari Nails Spa, cada cita es un momento reservado exclusivamente para ti, combinando diseño de alta gama, salud ungueal y protocolos rigurosos de bioseguridad.',
         'images'      => [
-            'hero'       => 'images/mariana-shoot-4.jpg',
-            'specialist' => 'images/mariana-shoot-1.jpg',
+            'hero'       => 'assets/img/mariana-shoot-4.jpg',
+            'specialist' => 'assets/img/mariana-shoot-1.jpg',
         ],
     ],
 

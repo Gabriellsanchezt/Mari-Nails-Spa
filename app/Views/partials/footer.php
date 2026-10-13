@@ -6,7 +6,7 @@
       <div class="footer-brand">
         <div class="brand-logo">
           <div class="brand-icon-wrapper" style="border-color:var(--color-gold); overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <img src="<?= asset('images/favicon-64.png') ?>" alt="Logo <?= e(config('app.name')) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="<?= asset('assets/img/favicon-64.png') ?>" alt="Logo <?= e(config('app.name')) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
           </div>
           <div class="brand-name" style="color:var(--color-white);">
             Mari Nails <span style="color:var(--color-gold-light);">Spa Boutique</span>

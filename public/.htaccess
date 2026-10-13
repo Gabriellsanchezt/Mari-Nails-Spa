@@ -4,6 +4,11 @@ AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Compatibilidad con rutas anteriores hacia assets/
+    RewriteRule ^images/(.*)$ assets/img/$1 [L]
+    RewriteRule ^css/(.*)$ assets/css/$1 [L]
+    RewriteRule ^js/(.*)$ assets/js/$1 [L]
+
     # Permitir acceso directo a archivos y directorios existentes
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

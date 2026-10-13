@@ -14,8 +14,8 @@ class Specialist
             'evolution'  => config('specialist.evolution', '8 Años de Evolución'),
             'quote'      => config('specialist.quote', 'Este arte no solo me dio una profesión, me regaló confianza, paciencia y a clientas maravillosas que hoy son parte de mi corazón.'),
             'bio'        => config('specialist.bio'),
-            'image'      => config('specialist.images.specialist', 'images/mariana-shoot-1.jpg'),
-            'hero_image' => config('specialist.images.hero', 'images/mariana-shoot-4.jpg'),
+            'image'      => config('specialist.images.specialist', 'assets/img/mariana-shoot-1.jpg'),
+            'hero_image' => config('specialist.images.hero', 'assets/img/mariana-shoot-4.jpg'),
             'pillars'    => [
                 [
                     'icon'  => 'fa-solid fa-shield-halved',
