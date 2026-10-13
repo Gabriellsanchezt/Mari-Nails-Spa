@@ -34,7 +34,7 @@
     <div class="hero-visual-wrapper">
       <div class="hero-gold-border-decor"></div>
       <div class="hero-image-card">
-        <img src="<?= asset($specialist['hero_image']) ?>" alt="<?= e($specialist['name']) ?> - Especialista en Uñas y Fundadora de <?= e(config('app.name')) ?>">
+        <img src="<?= asset($specialist['hero_image']) ?>" alt="<?= e($specialist['name']) ?> - Especialista en Uñas y Fundadora de <?= e(config('app.name')) ?>" fetchpriority="high" decoding="async">
       </div>
     </div>
 
@@ -120,6 +120,9 @@
       </div>
 
       <form id="quickBookingForm" autocomplete="off">
+        <!-- Campo Honeypot silencioso anti-bots / spam -->
+        <input type="text" id="quickHpTrap" name="_mari_quick_hp" style="display:none !important; position:absolute !important; left:-9999px !important;" tabindex="-1" autocomplete="off">
+
         <div class="booking-form-grid">
           
           <!-- Nombre de la clienta -->
@@ -240,7 +243,7 @@
       <!-- Retrato Profesional en Alta Resolución de Mariana Torres -->
       <div class="specialist-image-card">
         <div class="specialist-img-container">
-          <img src="<?= asset($specialist['image']) ?>" alt="<?= e($specialist['name']) ?> - <?= e($specialist['role']) ?> en <?= e(config('app.name')) ?>" style="object-position: center 15%;">
+          <img src="<?= asset($specialist['image']) ?>" alt="<?= e($specialist['name']) ?> - <?= e($specialist['role']) ?> en <?= e(config('app.name')) ?>" style="object-position: center 15%;" loading="lazy" decoding="async">
         </div>
         <div class="specialist-badge-float">
           <i class="fa-solid fa-gem"></i>

@@ -48,23 +48,32 @@ class Router
 
     private function executeHandler(array|callable $handler, Request $request): void
     {
-        if (is_callable($handler)) {
-            $handler($request);
-            return;
-        }
+        try {
+            if (is_callable($handler)) {
+                $handler($request);
+                return;
+            }
 
-        if (is_array($handler) && count($handler) === 2) {
-            [$class, $method] = $handler;
-            if (class_exists($class)) {
-                $controller = new $class();
-                if (method_exists($controller, $method)) {
-                    $controller->$method($request);
-                    return;
+            if (is_array($handler) && count($handler) === 2) {
+                [$class, $method] = $handler;
+                if (class_exists($class)) {
+                    $controller = new $class();
+                    if (method_exists($controller, $method)) {
+                        $controller->$method($request);
+                        return;
+                    }
                 }
             }
-        }
 
-        http_response_code(500);
-        echo "Error interno: Controlador o acción no válida.";
+            throw new \RuntimeException("Controlador o acción no válida.");
+        } catch (\Throwable $e) {
+            error_log('[MariNails Router Error] ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
+            http_response_code(500);
+            try {
+                View::render('errors/500', ['error' => $e->getMessage()], 'main');
+            } catch (\Throwable) {
+                echo "<h1>500 - Error del servidor</h1><p>Ha ocurrido un problema al procesar la solicitud. Por favor intenta de nuevo.</p>";
+            }
+        }
     }
 }

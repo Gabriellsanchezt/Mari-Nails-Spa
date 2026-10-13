@@ -1,8 +1,38 @@
 DirectoryIndex index.php index.html
 AddDefaultCharset UTF-8
 
+# Protección de carpetas sensibles del núcleo MVC
+RedirectMatch 403 ^/(app|config|vendor)/.*$
+
+# Bloquear archivos de configuración y control de versiones
+<FilesMatch "(^\.|\.env|composer\.(json|lock)|\.md|\.log)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Cabeceras de Seguridad y Resiliencia
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Compresión GZIP / Deflate para carga ultra-rápida de la landing page
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Bloquear acceso web directo a carpetas internas del servidor
+    RewriteRule ^(app|config|vendor)(/.*)?$ - [F,L]
 
     # Compatibilidad con rutas anteriores hacia assets/
     RewriteRule ^images/(.*)$ assets/img/$1 [L]

@@ -10,6 +10,9 @@
     </div>
 
     <form id="modalBookingForm" autocomplete="off">
+      <!-- Campo Honeypot silencioso anti-bots / spam -->
+      <input type="text" id="modalHpTrap" name="_mari_modal_hp" style="display:none !important; position:absolute !important; left:-9999px !important;" tabindex="-1" autocomplete="off">
+
       <div class="form-group" style="margin-bottom: 1rem;">
         <label for="modalClientName"><i class="fa-regular fa-user"></i> Tu Nombre Completo</label>
         <input type="text" id="modalClientName" class="form-control" placeholder="Ej. Camila Silva" autocomplete="off" required>

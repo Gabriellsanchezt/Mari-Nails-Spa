@@ -151,9 +151,26 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingDaySelect.addEventListener('change', updateBookingSummary);
   }
 
+  // Función segura y resiliente para abrir WhatsApp (con fallback ante bloqueadores de popups en móviles)
+  function safeOpenWhatsApp(url) {
+    try {
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = url;
+      }
+    } catch {
+      window.location.href = url;
+    }
+  }
+
   if (sendBookingWhatsAppBtn) {
     sendBookingWhatsAppBtn.addEventListener('click', (e) => {
       e.preventDefault();
+
+      // Validación Honeypot: si el campo invisible fue completado, ignorar envío silenciosamente (bot/spam)
+      const hp = document.getElementById('quickHpTrap');
+      if (hp && hp.value.trim() !== '') return;
+
       const rawName = bookingNameInput && bookingNameInput.value.trim() !== '' ? bookingNameInput.value.trim() : '';
       const name = rawName || '[Nombre]';
       const request = bookingRequestInput && bookingRequestInput.value.trim() !== '' ? bookingRequestInput.value.trim() : 'Diseño personalizado';
@@ -169,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const customMessage = `¡Hola Mariana!\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}.${dayClause} ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
-      window.open(whatsappUrl, '_blank');
+      safeOpenWhatsApp(whatsappUrl);
     });
   }
 
@@ -181,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const serviceName = button.getAttribute('data-service-name');
       const customMessage = `¡Hola Mariana! Deseo agendar una cita en Mari Nails Spa para el servicio: *${serviceName}*. ¿Cuál es tu disponibilidad más próxima en Barquisimeto?`;
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
-      window.open(whatsappUrl, '_blank');
+      safeOpenWhatsApp(whatsappUrl);
     });
   });
 
@@ -393,6 +410,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalForm) {
     modalForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      // Validación Honeypot
+      const hp = document.getElementById('modalHpTrap');
+      if (hp && hp.value.trim() !== '') return;
+
       const rawName = document.getElementById('modalClientName') ? document.getElementById('modalClientName').value.trim() : '';
       const clientName = rawName || '[Nombre]';
       const request = document.getElementById('modalClientRequest') ? document.getElementById('modalClientRequest').value.trim() : 'Diseño personalizado';
@@ -409,11 +431,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const msg = `¡Hola Mariana!\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}.${dayClause} ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const targetUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
-      window.open(targetUrl, '_blank');
+      safeOpenWhatsApp(targetUrl);
 
       if (modalBackdrop) modalBackdrop.classList.remove('open');
       resetBookingFields();
     });
+  }
+
+  // --- 6. Barra Flotante de Conversión Móvil al hacer Scroll ---
+  const mobileBottomBar = document.getElementById('mobileBottomBar');
+  if (mobileBottomBar) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 350) {
+            mobileBottomBar.classList.add('visible');
+            document.body.classList.add('has-mobile-bar');
+          } else {
+            mobileBottomBar.classList.remove('visible');
+            document.body.classList.remove('has-mobile-bar');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   }
 
   // Inicializar estado del resumen

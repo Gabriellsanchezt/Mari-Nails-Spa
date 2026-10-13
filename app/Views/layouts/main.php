@@ -16,11 +16,17 @@
   <meta name="keywords" content="Mari Nails Spa, Uñas Barquisimeto, Manicura Barquisimeto, Pedicura Lara, Mariana Torres, Uñas Acrílicas, Nail Art, Spa de Uñas">
   <meta name="author" content="<?= e(config('specialist.name')) ?> - <?= e(config('app.name')) ?>">
 
+  <!-- Resource Hints para velocidad de carga ultra-rápida -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
   <!-- Open Graph / Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?= e(config('app.name')) ?> | <?= e(config('app.tagline')) ?>">
   <meta property="og:description" content="<?= e(config('app.description')) ?>">
   <meta property="og:image" content="<?= asset(config('specialist.images.hero')) ?>">
+  <meta property="og:locale" content="es_VE">
   
   <!-- Google Fonts: Playfair Display + Plus Jakarta Sans + Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +35,42 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Schema.org JSON-LD (SEO Local & Rich Snippets para Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NailSalon",
+    "name": "<?= e(config('app.name')) ?>",
+    "description": "<?= e(config('app.description')) ?>",
+    "image": "<?= asset(config('specialist.images.hero')) ?>",
+    "telephone": "+584120549526",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrera 3",
+      "addressLocality": "Barquisimeto",
+      "addressRegion": "Lara",
+      "addressCountry": "VE"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "<?= e(config('specialist.name')) ?>",
+      "jobTitle": "<?= e(config('specialist.title')) ?>"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:30",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "<?= e(config('instagram.url')) ?>"
+    ]
+  }
+  </script>
 
   <!-- Favicon / Logotipo Oficial de la Pestaña -->
   <link rel="icon" type="image/png" sizes="32x32" href="<?= asset('assets/img/favicon-32.png') ?>">
@@ -71,6 +113,19 @@
   <!-- Modales -->
   <?php \App\Core\View::partial('partials/booking-modal'); ?>
   <?php \App\Core\View::partial('partials/lightbox'); ?>
+
+  <!-- Barra Flotante de Conversión Móvil (Aparece tras superar el Hero en smartphones) -->
+  <div id="mobileBottomBar" class="mobile-bottom-bar" aria-label="Acceso rápido para agendar cita">
+    <div class="mobile-bottom-bar-inner">
+      <div class="mobile-bottom-bar-info">
+        <span class="mobile-bar-salon"><?= e(config('app.name')) ?></span>
+        <span class="mobile-bar-specialist">Atención Previa Cita &bull; Mariana Torres</span>
+      </div>
+      <a href="#reserva" class="btn btn-gold btn-sm mobile-bar-btn">
+        <i class="fa-solid fa-calendar-check"></i> Agendar Cita
+      </a>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="<?= asset('assets/js/main.js') ?>"></script>
