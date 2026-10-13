@@ -53,7 +53,7 @@
       <button id="whatsappBubbleClose" class="whatsapp-bubble-close" aria-label="Cerrar mensaje">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <strong>¡Hola bella! 💅</strong>
+      <strong>¡Hola! <i class="fa-solid fa-sparkles" style="color:var(--color-gold);"></i></strong>
       ¿Deseas agendar tu cita con <?= e(config('specialist.name')) ?>? Escríbenos y te asignamos horario en minutos.
     </div>
 

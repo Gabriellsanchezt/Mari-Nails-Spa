@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const autoDate = getUpcomingDateForDay(day);
       const dateText = autoDate ? ` (${autoDate})` : '';
 
-      const customMessage = `¡Hola Mariana!🌸\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      const customMessage = `¡Hola Mariana!\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
       window.open(whatsappUrl, '_blank');
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       const serviceName = button.getAttribute('data-service-name');
-      const customMessage = `¡Hola Mariana! 💅 Deseo agendar una cita en *Mari Nails Spa* para el servicio: *${serviceName}*. ¿Cuál es tu disponibilidad más próxima en Barquisimeto?`;
+      const customMessage = `¡Hola Mariana! Deseo agendar una cita en Mari Nails Spa para el servicio: *${serviceName}*. ¿Cuál es tu disponibilidad más próxima en Barquisimeto?`;
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
       window.open(whatsappUrl, '_blank');
     });
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const autoDate = getUpcomingDateForDay(day);
       const dateText = autoDate ? ` (${autoDate})` : '';
 
-      const msg = `¡Hola Mariana!🌸\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      const msg = `¡Hola Mariana!\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const targetUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
       window.open(targetUrl, '_blank');

@@ -15,6 +15,8 @@ if (!file_exists($autoloader)) {
 }
 require_once $autoloader;
 
+header('Content-Type: text/html; charset=UTF-8');
+
 use App\Core\Request;
 use App\Core\Router;
 use App\Controllers\HomeController;

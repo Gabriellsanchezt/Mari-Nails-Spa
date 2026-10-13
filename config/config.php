@@ -29,8 +29,8 @@ return [
     'whatsapp' => [
         'number'          => '584120549526',
         'display'         => '+58 412-0549526',
-        'default_message' => '¡Hola Mariana! 🌸 Deseo agendar una cita en Mari Nails Spa',
-        'link'            => 'https://wa.me/584120549526?text=%C2%A1Hola%20Mariana!%20%F0%9F%8C%B8%20Deseo%20agendar%20una%20cita%20en%20Mari%20Nails%20Spa',
+        'default_message' => '¡Hola Mariana! Deseo agendar una cita en Mari Nails Spa',
+        'link'            => 'https://wa.me/584120549526?text=' . rawurlencode('¡Hola Mariana! Deseo agendar una cita en Mari Nails Spa'),
     ],
 
     'instagram' => [
