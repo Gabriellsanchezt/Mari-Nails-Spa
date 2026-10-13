@@ -1032,7 +1032,7 @@ button {
 .gallery-placeholder-card {
   background: linear-gradient(145deg, #FFFFFF 0%, #FAF2F4 100%);
   border: 1.5px solid rgba(212, 175, 55, 0.3);
-  padding: 1.6rem 1.25rem;
+  padding: 1.75rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1052,60 +1052,36 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.95rem;
   width: 100%;
 }
 
 .placeholder-icon-box {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: var(--color-rose-light);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-gold-dark);
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   transition: var(--transition-smooth);
 }
 
 .gallery-placeholder-card:hover .placeholder-icon-box {
   background: var(--gradient-gold);
   color: var(--color-text-primary);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .placeholder-title {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: var(--color-text-primary);
-  line-height: 1.2;
-}
-
-.placeholder-desc {
-  font-size: 0.78rem;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-  max-width: 230px;
-}
-
-.placeholder-footer {
-  margin-top: 0.25rem;
-}
-
-.placeholder-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-gold-dark);
-  background: rgba(212, 175, 55, 0.12);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-  border: 1px dashed rgba(212, 175, 55, 0.4);
+  line-height: 1.25;
 }
 
 .gallery-footer-action {

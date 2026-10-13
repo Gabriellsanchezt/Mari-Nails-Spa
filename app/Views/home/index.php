@@ -210,10 +210,6 @@
                 <i class="<?= e($item['icon']) ?>"></i>
               </div>
               <h4 class="placeholder-title"><?= e($item['name']) ?></h4>
-              <p class="placeholder-desc"><?= e($item['description']) ?></p>
-              <div class="placeholder-footer">
-                <span class="placeholder-badge"><i class="fa-solid fa-clock"></i> Fotos oficiales en preparación</span>
-              </div>
             </div>
           </div>
         <?php endif; ?>
