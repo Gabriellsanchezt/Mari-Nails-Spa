@@ -59,15 +59,74 @@ document.addEventListener('DOMContentLoaded', () => {
   const summaryRequestText = document.getElementById('summaryRequestText');
   const summaryDayText = document.getElementById('summaryDayText');
 
+  // Función auxiliar: Cálculo automático de fecha tentativa según el día seleccionado
+  function getUpcomingDateForDay(dayName) {
+    const dayClean = (dayName || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const dayIndexMap = {
+      'domingo': 0,
+      'lunes': 1,
+      'martes': 2,
+      'miercoles': 3,
+      'jueves': 4,
+      'viernes': 5,
+      'sabado': 6
+    };
+
+    const targetDay = dayIndexMap[dayClean];
+    if (targetDay === undefined) return '';
+
+    const now = new Date();
+    const currentDay = now.getDay();
+    let diff = targetDay - currentDay;
+
+    // Si es hoy pero ya pasaron las 18:00 (hora de cierre del spa), sugerir el de la próxima semana
+    if (diff === 0 && now.getHours() >= 18) {
+      diff = 7;
+    } else if (diff < 0) {
+      diff += 7;
+    }
+
+    const targetDate = new Date(now);
+    targetDate.setDate(now.getDate() + diff);
+
+    const monthNames = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+
+    const dayNum = targetDate.getDate();
+    const monthStr = monthNames[targetDate.getMonth()];
+
+    if (targetDate.getFullYear() !== now.getFullYear()) {
+      return `${dayNum} de ${monthStr} de ${targetDate.getFullYear()}`;
+    }
+
+    return `${dayNum} de ${monthStr}`;
+  }
+
   function updateBookingSummary() {
     if (summaryRequestText && bookingRequestInput) {
       summaryRequestText.textContent = bookingRequestInput.value.trim() || 'Diseño personalizado';
     }
     if (summaryDayText && bookingDaySelect) {
       const dayVal = bookingDaySelect.value || 'Lunes';
-      summaryDayText.textContent = `${dayVal} (Tentativo)`;
+      const autoDate = getUpcomingDateForDay(dayVal);
+      summaryDayText.textContent = autoDate ? `${dayVal} (${autoDate} - Tentativo)` : `${dayVal} (Tentativo)`;
     }
   }
+
+  // Pre-seleccionar día sugerido según la fecha actual
+  const dayNamesByIndex = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const nowForInit = new Date();
+  let defaultDayIndex = nowForInit.getDay();
+  if (nowForInit.getHours() >= 18) {
+    defaultDayIndex = (defaultDayIndex + 1) % 7;
+  }
+  if (defaultDayIndex === 0) defaultDayIndex = 1; // Si es domingo, sugerir lunes
+  const defaultDayName = dayNamesByIndex[defaultDayIndex];
+  if (bookingDaySelect) bookingDaySelect.value = defaultDayName;
+  const modalClientDayInput = document.getElementById('modalClientDay');
+  if (modalClientDayInput) modalClientDayInput.value = defaultDayName;
 
   if (bookingRequestInput) {
     bookingRequestInput.addEventListener('input', updateBookingSummary);
@@ -81,14 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const rawName = bookingNameInput && bookingNameInput.value.trim() !== '' ? bookingNameInput.value.trim() : '';
       const name = rawName || '[Nombre]';
-      const request = bookingRequestInput && bookingRequestInput.value.trim() !== '' ? bookingRequestInput.value.trim() : '';
+      const request = bookingRequestInput && bookingRequestInput.value.trim() !== '' ? bookingRequestInput.value.trim() : 'Diseño personalizado';
       const day = bookingDaySelect ? bookingDaySelect.value : 'Lunes';
+      const autoDate = getUpcomingDateForDay(day);
+      const dateText = autoDate ? ` (${autoDate})` : '';
 
-      let customMessage = `¡Hola Mariana! 🌸 Mi nombre es ${name}. Me gustaría agendar una cita en Mari Nails Spa`;
-      if (request) {
-        customMessage += ` para: ${request}`;
-      }
-      customMessage += `. Mi día preferido (tentativo) es el ${day}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      const customMessage = `¡Hola Mariana!🌸\n\nMi nombre es ${name}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(customMessage)}`;
       window.open(whatsappUrl, '_blank');
@@ -303,14 +360,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const rawName = document.getElementById('modalClientName') ? document.getElementById('modalClientName').value.trim() : '';
       const clientName = rawName || '[Nombre]';
-      const request = document.getElementById('modalClientRequest') ? document.getElementById('modalClientRequest').value.trim() : '';
+      const request = document.getElementById('modalClientRequest') ? document.getElementById('modalClientRequest').value.trim() : 'Diseño personalizado';
       const day = document.getElementById('modalClientDay') ? document.getElementById('modalClientDay').value : 'Lunes';
+      const autoDate = getUpcomingDateForDay(day);
+      const dateText = autoDate ? ` (${autoDate})` : '';
 
-      let msg = `¡Hola Mariana! 🌸 Mi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails Spa`;
-      if (request) {
-        msg += ` para: ${request}`;
-      }
-      msg += `. Mi día preferido (tentativo) es el ${day}. ¿Qué días tienes disponibilidad en tu agenda?`;
+      const msg = `¡Hola Mariana!🌸\n\nMi nombre es ${clientName}. Me gustaría agendar una cita en Mari Nails para realizarme: ${request}. Mi día preferido (tentativo) seria el dia: ${day}${dateText}. ¿Qué días tienes disponibilidad en tu agenda?`;
 
       const targetUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
       window.open(targetUrl, '_blank');
