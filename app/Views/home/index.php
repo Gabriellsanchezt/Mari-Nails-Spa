@@ -197,10 +197,13 @@
     <div class="gallery-grid">
       <?php foreach ($gallery as $item): ?>
         <?php if (!empty($item['image'])): ?>
-          <div class="gallery-item" data-category="<?= e($item['category']) ?>" data-lightbox-src="<?= asset($item['image']) ?>" role="button" tabindex="0" aria-label="Ampliar fotografía de <?= e($item['name']) ?>">
-            <img src="<?= asset($item['image']) ?>" alt="<?= e($item['alt']) ?>">
+          <div class="gallery-item" data-category="<?= e($item['category']) ?>" data-lightbox-src="<?= asset($item['image']) ?>" data-name="<?= e($item['name']) ?>" role="button" tabindex="0" aria-label="Ampliar fotografía de <?= e($item['name']) ?>">
+            <img src="<?= asset($item['image']) ?>" alt="<?= e($item['alt']) ?>" loading="lazy">
             <div class="gallery-expand-hint">
               <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+            <div class="gallery-item-caption">
+              <span class="gallery-item-title"><?= e($item['name']) ?></span>
             </div>
           </div>
         <?php else: ?>

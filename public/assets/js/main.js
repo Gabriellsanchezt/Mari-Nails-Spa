@@ -176,8 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const filterCategory = btn.getAttribute('data-category');
 
       galleryItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filterCategory === 'all' || itemCategory === filterCategory) {
+        const itemCategory = item.getAttribute('data-category') || '';
+        const itemCategories = itemCategory.split(/\s+/);
+        if (filterCategory === 'all' || itemCategories.includes(filterCategory)) {
           item.style.display = '';
           item.style.opacity = '1';
         } else {

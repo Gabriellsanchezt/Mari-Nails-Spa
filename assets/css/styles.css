@@ -1028,6 +1028,35 @@ button {
   transform: scale(1.08);
 }
 
+.gallery-item-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 0.85rem 0.85rem;
+  background: linear-gradient(to top, rgba(35, 25, 34, 0.85) 0%, rgba(35, 25, 34, 0.4) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-item-title {
+  color: #FFFFFF;
+  font-family: var(--font-heading-playfair), 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover .gallery-item-caption {
+  opacity: 0.95;
+}
+
 /* Tarjetas de servicios en portafolio (espera de fotos originales) */
 .gallery-placeholder-card {
   background: linear-gradient(145deg, #FFFFFF 0%, #FAF2F4 100%);
