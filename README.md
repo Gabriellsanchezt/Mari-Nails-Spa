@@ -1,199 +1,175 @@
-#  Mari Nails Spa — Plataforma Boutique & Sistema de Citas
+# 🌸 Mari Nails Spa — Plataforma Web Boutique & Sistema de Agendamiento
 
-Plataforma web boutique y sistema de agendamiento rápido desarrollada para **Mari Nails Spa**, salón especializado de alta gama dirigido por la especialista **Mariana Torres** (*Técnico Profesional de Salón • 8 Años de Evolución*) en **Barquisimeto, Estado Lara, Venezuela**.
-
-Construida bajo una arquitectura **MVC (Modelo-Vista-Controlador)** limpia, modular y desacoplada con **PHP 8**, gestión de dependencias y autocarga mediante **Composer (PSR-4)**, y diseño boutique de alta conversión optimizado para dispositivos móviles y escritorio.
+> **Experiencia digital de alta conversión y sistema de citas express** para el salón especializado en salud y estética ungueal **Mari Nails Spa**, fundado y dirigido por la especialista **Mariana Torres** (*Técnico Profesional de Salón • 8 Años de Trayectoria*) en **Barquisimeto, Estado Lara, Venezuela**.
 
 ---
 
-##  Arquitectura MVC
+## 🎯 ¿Qué es y qué propósito cumple esta plataforma?
 
-El proyecto sigue una separación rigurosa de responsabilidades para garantizar mantenibilidad, escalabilidad y facilidad de despliegue:
+La plataforma de **Mari Nails Spa** no es simplemente un sitio web informativo; es una **herramienta de captación, confianza y conversión de clientas**. Está diseñada específicamente para resolver la fricción habitual de agendar servicios de belleza por redes sociales, centralizando la propuesta de valor del salón en una experiencia web de lujo, rápida y accesible desde cualquier smartphone o computadora.
+
+### El problema que resuelve:
+* **Elimina las conversaciones eternas de "¿Qué precio tiene?" o "¿Tienes disponible mañana?":** La clienta explora el portafolio real, conoce los protocolos del salón y define con claridad qué servicio busca antes de iniciar la conversación.
+* **Agiliza el agendamiento:** Transforma el interés visual de la visitante en un mensaje de WhatsApp estructurado, con fecha tentativa calculada automáticamente y sin necesidad de crear cuentas ni descargar aplicaciones.
+* **Proyecta profesionalismo y exclusividad:** Comunica la bioseguridad clínica (esterilización en autoclave), la atención estrictamente previa cita y la trayectoria de 8 años de Mariana Torres, diferenciando a la marca del mercado convencional.
+
+---
+
+## ✨ ¿Qué hace la plataforma? (Funcionalidades Principales)
+
+### 1. 📅 Asistente de Agendamiento Inteligente vía WhatsApp
+* **Sin registros engorrosos:** La clienta no necesita crear contraseñas ni llenar formularios extensos.
+* **Especificación libre del servicio:** La usuaria indica lo que desea hacerse (ej. *"Nivelación con diseño minimalista"* o *"Retiro de acrílico y manicura semi"*).
+* **Selector de Día Tentativo con Cálculo de Fecha Exacta:**
+  * Al seleccionar un día de la semana (ej. *Viernes*), el motor del sistema calcula automáticamente la fecha exacta del calendario correspondiente al próximo viernes (formato `DD/MM/YYYY`).
+  * Inicia sin ningún día preseleccionado para no sesgar ni obligar la selección de la clienta.
+  * Aclara explícitamente que el día está sujeto a confirmación de agenda.
+* **Mensaje Limpio y Natural:** Construye un mensaje para WhatsApp educado, fluido y sin códigos rotos ni emojis corruptos, listo para ser enviado con un solo toque.
+* **Respaldo ante bloqueo de ventanas emergentes:** Si el navegador móvil bloquea la apertura automática de WhatsApp, la plataforma despliega una tarjeta de confirmación inmediata con botón directo de reintento.
+
+### 2. 💅 Portafolio Visual Interactivo con Visor Lightbox
+* **Galería organizada por técnicas del salón:**
+  * *Manicura semi*
+  * *Pedicura*
+  * *Nivelación*
+  * *Kapping de polygel*
+  * *Soft gel*
+  * *Dual system*
+  * *Reparación de uña*
+  * *Retiro de sistemas y semi*
+  * *Encapsulados y Diseños 3D*
+* **Filtros instantáneos:** Permite alternar entre categorías sin recargar la página.
+* **Visor Lightbox en Pantalla Completa:**
+  * Al hacer clic en cualquier diseño, se abre una vista inmersiva en alta definición con fondo traslúcido.
+  * Permite apreciar el detalle del limado, cutícula limpia y nivelación perfecta.
+  * Navegación fluida mediante clics, flechas del teclado (`←` y `→`) o tecla `ESC`.
+  * Manejo estético de servicios que requieren cotización previa o evaluación directa.
+
+### 3. 🛡️ Protocolo de Bioseguridad y Atención Exclusiva
+* **Atención Previa Cita:** Comunica la filosofía del salón de respetar el tiempo de cada clienta, garantizando un espacio privado, relajante y sin esperas en sala.
+* **Esterilización en Autoclave Grado Médico:** Destaca el procesamiento térmico y de presión de todo el instrumental metálico, brindando tranquilidad absoluta en salud e higiene.
+* **Kits Descartables y Tecnología:** Explica el uso de limas y pulidores de un solo uso, así como micromotor profesional para manicura rusa y combinada sin maltratar la uña natural.
+
+### 4. 📱 Barra Flotante de Conversión Móvil (Sticky CTA)
+* Diseñada para el comportamiento en teléfonos móviles, donde se genera más del 85% de las visitas.
+* Al hacer scroll, aparece una barra inferior elegante y no invasiva con el botón **"Reservar Cita"**, asegurando que la llamada a la acción esté siempre al alcance del pulgar sin importar qué sección esté revisando la usuaria.
+
+### 5. 💬 Reseñas y Testimonios de Clientas Habituales
+* Muestra valoraciones de clientas recurrentes que destacan la durabilidad del esmaltado, el cuidado de la uña natural y la calidez del servicio brindado por Mariana Torres.
+* Aumenta la confianza y credibilidad de nuevas visitantes.
+
+### 6. 📍 Geolocalización y Llegada al Salón
+* Ubicación detallada en **Carrera 3, Barquisimeto, Estado Lara**.
+* Mapa interactivo integrado para explorar la zona.
+* Botón de navegación directa con enlace verificado de **Google Maps** para abrir la ruta en Waze o Google Maps con un solo clic.
+
+### 7. ❓ Sección de Preguntas Frecuentes (FAQ)
+* Despeja las dudas más frecuentes de las clientas antes de escribir:
+  * ¿Con cuánta anticipación debo reservar?
+  * ¿Realizan retiro de sistemas aplicados en otros salones?
+  * ¿Cuánto tiempo dura aproximadamente cada servicio?
+  * ¿Cuáles son las formas de pago aceptadas?
+
+### 8. 🔒 Privacidad y Anti-Persistencia de Formularios (Cero Fugas de Datos)
+* Si la clienta recarga la página o vuelve atrás en el navegador, los datos de agendamiento previo se limpian automáticamente.
+* Protege la privacidad de la usuaria en dispositivos compartidos y garantiza que cada nueva consulta inicie desde cero.
+
+---
+
+## 🗺️ El Flujo de la Clienta (User Journey)
 
 ```text
-mari-nails-spa/
-│
-├── app/                                 # Lógica de la aplicación (Namespace: App\)
-│   ├── Controllers/                     # Controladores HTTP
-│   │   ├── HomeController.php           # Renderizado de la landing page y data
-│   │   └── BookingController.php        # Procesamiento de citas y API WhatsApp
-│   ├── Core/                            # Núcleo del framework MVC
-│   │   ├── Controller.php               # Controlador base (render, json, redirect)
-│   │   ├── Request.php                  # Manejo y sanitización de peticiones HTTP
-│   │   ├── Router.php                   # Enrutador HTTP (GET, POST, HEAD)
-│   │   └── View.php                     # Motor de renderizado con layouts y partials
-│   ├── Helpers/                         # Funciones auxiliares globales
-│   │   └── helpers.php                  # asset(), url(), config(), e(), base_url()
-│   ├── Models/                          # Capa de datos y lógica de dominio
-│   │   ├── Faq.php                      # Preguntas frecuentes orgánicas
-│   │   ├── Gallery.php                  # Diseños de uñas, categorías y portafolio
-│   │   ├── Review.php                   # Opiniones reales de clientas
-│   │   └── Specialist.php               # Perfil, frase y pilares de Mariana Torres
-│   └── Views/                           # Plantillas de presentación (HTML5 / PHP)
-│       ├── errors/
-│       │   └── 404.php                  # Vista de error de ruta no encontrada
-│       ├── home/
-│       │   └── index.php                # Vista principal componiendo las secciones
-│       ├── layouts/
-│       │   └── main.php                 # Layout maestro (HTML shell, head, assets)
-│       └── partials/                    # Componentes modulares reutilizables
-│           ├── booking-modal.php        # Modal de agendamiento rápido
-│           ├── footer.php               # Pie de página boutique centrado
-│           ├── lightbox.php             # Visor interactivo en pantalla completa
-│           └── navbar.php               # Barra de navegación responsive
-│
-├── assets/                              # Recursos estáticos del proyecto (raíz y desarrollo)
-│   ├── css/
-│   │   └── styles.css                   # Sistema de diseño boutique y responsive
-│   ├── img/                             # Fotografías oficiales, logo y favicons
-│   └── js/
-│       └── main.js                      # Control del Lightbox, modales y WhatsApp
-│
-├── config/
-│   └── config.php                       # Configuración central (WhatsApp, Maps, Instagram)
-│
-├── public/                              # Raíz pública del servidor web (Document Root)
-│   ├── assets/                          # Recursos estáticos servidos directamente
-│   │   ├── css/
-│   │   │   └── styles.css
-│   │   ├── img/                         # Imágenes optimizadas para producción
-│   │   └── js/
-│   │       └── main.js
-│   ├── favicon.ico                      # Favicon clásico para navegadores
-│   ├── favicon.png                      # Favicon PNG
-│   ├── favicon.svg                      # Isotipo boutique vectorial
-│   ├── .htaccess                        # Reglas de reescritura Apache para public
-│   └── index.php                        # Front Controller / Punto de entrada único
-│
-├── vendor/                              # Autocarga de Composer (PSR-4)
-├── .gitignore                           # Archivos excluidos del control de versiones
-├── .htaccess                            # Redirección de raíz a public/ (XAMPP / Apache)
-├── composer.json                        # Definición del paquete y autoloading PSR-4
-├── index.php                            # Delegación al Front Controller para XAMPP
-└── README.md                            # Documentación técnica del proyecto
+[ Visitante llega desde Instagram / Enlace ]
+                    │
+                    ▼
+[ 1. Descubre la propuesta de valor ] ──▶ Filosofía boutique, 8 años de experiencia, bioseguridad.
+                    │
+                    ▼
+[ 2. Explora el Portafolio ] ───────────▶ Filtra por Manicura semi, Nivelación, Kapping o Soft Gel.
+                    │                     Abre Lightbox en pantalla completa para ver detalles.
+                    ▼
+[ 3. Valora Testimonios y Ubicación ] ──▶ Lee reseñas reales y ubica el salón en Barquisimeto.
+                    │
+                    ▼
+[ 4. Solicita su Cita Exprés ] ─────────▶ Escribe su deseo, elige día tentativo sin ataduras.
+                    │
+                    ▼
+[ 5. Conexión Inmediata con WhatsApp ] ─▶ El sistema calcula fecha exacta y abre el chat oficial
+                                          con Mariana Torres con el mensaje redactado y listo.
 ```
 
 ---
 
-##  Características Destacadas
+## 🎨 Identidad Visual y Estilo Editorial
 
-* **Arquitectura MVC con Composer (PSR-4)**: Código orientado a objetos, tipado estricto (`declare(strict_types=1);`), enrutamiento limpio y sin acoplamiento a frameworks pesados.
-* **Fotografías de Mariana Torres en Alta Resolución Nativa**: Extraídas en calidad de estudio profesional (hasta 3072 × 4096 px) destacando su uniforme boutique, instrumental de precisión y micromotor.
-* **Portafolio con Visor Lightbox Pantalla Completa**: Galería de diseños de uñas con pestañas de filtrado (*Acrílicas, Nail Art, Spa*), apertura modal con zoom al hacer clic, y navegación por teclado (`ESC`, flecha izquierda, flecha derecha).
-* **Asistente de Cita con Día Tentativo**: Formulario interactivo que permite ingresar solicitud en texto libre y día de preferencia, con nota de aclaración (*"Día tentativo sujeto a confirmación"*) y generador automático de mensaje personalizado directo a WhatsApp.
-* **Atención Exclusiva Previa Cita**: Sección central destacando la bioseguridad clínica en autoclave, insumos de primera línea y atención sin esperas.
-* **Opiniones Orgánicas de Clientas**: Testimonios reales sin menciones forzadas de ubicación, priorizando la satisfacción y fidelidad.
-* **Ubicación & Integración con Google Maps**: Dirección en Carrera 3, Barquisimeto, con enlace verificado a Google Maps ([https://maps.app.goo.gl/xGjdVrHkoanV1gEPA](https://maps.app.goo.gl/xGjdVrHkoanV1gEPA)) y mapa interactivo integrado.
-* **Compatibilidad Dual**: Funciona directamente en subcarpetas de XAMPP (`http://localhost/mari-nails-spa/`) o apuntando el DocumentRoot a `public/` en servidores de producción (Apache, Nginx, cPanel).
+La interfaz fue diseñada con una estética **Boutique & Soft Luxury**, transmitiendo higiene, sofisticación y cuidado personal:
 
----
-
-##  Sistema de Diseño Boutique
-
-| Token | Código HEX | Aplicación |
+| Tono / Elemento | Código Color | Uso en la Interfaz |
 | :--- | :--- | :--- |
-| **Palo de Rosa** | `#F5E6E8` | Fondos de tarjetas, badges sutiles y acentos delicados |
-| **Dorado Metálico** | `#D4AF37` / `#B89020` | Botones principales, bordes de lujo y detalles premium |
-| **Blanco Puro** | `#FFFFFF` | Superficies limpias y contraste de tarjetas |
-| **Berenjena Profundo** | `#3A2E39` | Tipografía principal editorial de alto contraste |
-| **WhatsApp Oficial** | `#25D366` | Llamados a la acción directos y botón flotante |
+| **Palo de Rosa Suave** | `#F5E6E8` | Fondos de tarjetas, badges sutiles y acentos delicados |
+| **Dorado Champagne** | `#D4AF37` / `#B89020` | Botones de acción principal, remates finos y detalles premium |
+| **Berenjena Editorial** | `#3A2E39` | Tipografía principal de alto contraste y legibilidad |
+| **Blanco Puro** | `#FFFFFF` | Contenedores limpios, tarjetas y separación visual |
+| **Verde WhatsApp** | `#25D366` | Canales de comunicación directa y botones de contacto |
 
-### Tipografías
-* **Títulos**: `Playfair Display` & `Cormorant Garamond` (Serif editorial refinada).
-* **Textos y Formularios**: `Plus Jakarta Sans` (Sans-serif moderna de alta legibilidad).
+* **Tipografía de Títulos:** `Playfair Display` & `Cormorant Garamond` (Elegancia clásica editorial).
+* **Tipografía de Contenido:** `Plus Jakarta Sans` (Claridad moderna y lectura descansada en pantallas táctiles).
 
 ---
 
-##  Requisitos e Instalación
+## 🛠️ Especificaciones Técnicas y Arquitectura
 
-### Requisitos Previos
-* **PHP**: 8.0 o superior (compatible con PHP 8.1 y 8.2).
-* **Composer**: 2.x instalado globalmente.
-* **Servidor Web**: Apache (con `mod_rewrite` habilitado) a través de XAMPP, WAMP, LAMP o servidor integrado de PHP.
+Para que la experiencia sea instantánea y confiable en conexiones de internet variables, la plataforma fue construida sin dependencias pesadas ni frameworks monolíticos que ralenticen la carga:
 
-### Paso 1: Clonar el Repositorio
-```bash
-git clone https://github.com/Gabriellsanchezt/Mari-Nails-Spa.git
-cd mari-nails-spa
-```
+* **Arquitectura MVC Limpia (Modelo-Vista-Controlador):** Separación estricta entre la lógica de negocio (`app/Controllers`, `app/Models`), la estructura (`app/Views`) y los recursos públicos (`public/`).
+* **PHP 8 Estricto:** Tipado estricto (`declare(strict_types=1);`), enrutamiento REST ligero y respuestas JSON asíncronas para el generador de citas.
+* **Autoloading Estándar PSR-4 (Composer):** Carga optimizada de clases bajo el namespace `App\`.
+* **Frontend Nativo Ultrarrápido:** JavaScript moderno (ES6+) sin librerías externas pesadas (jQuery eliminado) y CSS modular con variables nativas.
+* **Protección Anti-Spam (Honeypot):** Filtra solicitudes de bots maliciosos de manera silenciosa sin requerir captchas molestos para la clienta.
+* **Seguridad y Rendimiento de Servidor:** Cabeceras HTTP activas contra Clickjacking (`X-Frame-Options: SAMEORIGIN`), protección de tipos MIME (`X-Content-Type-Options: nosniff`) y compresión GZIP en Apache.
+* **Estructura Organizada de Recursos:** Carpeta `assets/` centralizada con imágenes (`assets/img/`), estilos (`assets/css/`) y scripts (`assets/js/`), reflejada en `public/assets/` para servir directamente en producción.
 
-### Paso 2: Instalar Dependencias con Composer
-Genera el mapa de autocarga optimizado:
-```bash
-composer install
-```
-*(O `composer dump-autoload -o` si no instalas librerías de terceros adicionales)*.
+---
 
-### Paso 3: Ejecución
+## 🚀 Puesta en Marcha Local
 
-#### Opción A: Vía XAMPP / WAMP (Recomendada)
-1. Coloca la carpeta del proyecto dentro de `C:\xampp\htdocs\mari-nails-spa`.
-2. Inicia el servicio **Apache** desde el panel de control de XAMPP.
-3. Abre tu navegador en:
-   ```text
-   http://localhost/mari-nails-spa/
+### Requisitos
+* **PHP 8.0 o superior**
+* **Composer** (para autocarga de clases)
+* Servidor web local como **XAMPP**, **WAMP**, **Laragon** o el servidor integrado de PHP.
+
+### Pasos Rápidos
+
+1. **Clonar el proyecto:**
+   ```bash
+   git clone https://github.com/Gabriellsanchezt/Mari-Nails-Spa.git
+   cd Mari-Nails-Spa
    ```
 
-#### Opción B: Vía Servidor Integrado de PHP
-Ejecuta apuntando a la carpeta pública:
-```bash
-php -S localhost:8000 -t public
-```
-Abre tu navegador en:
-```text
-http://localhost:8000
-```
+2. **Generar la autocarga de Composer:**
+   ```bash
+   composer install
+   # o bien: composer dump-autoload -o
+   ```
+
+3. **Ejecutar:**
+   * **Con XAMPP/WAMP:** Colocar la carpeta en `htdocs` y acceder a:
+     ```text
+     http://localhost/mari-nails-spa/
+     ```
+   * **Con el servidor integrado de PHP:**
+     ```bash
+     php -S localhost:8000 -t public
+     ```
+     Luego visitar: `http://localhost:8000`
 
 ---
 
-##  Endpoints de la Aplicación
+## 👩‍🎨 Créditos y Enlaces Oficiales
 
-| Método | Ruta | Controlador / Acción | Descripción |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/` | `HomeController@index` | Carga y renderizado de la landing page completa |
-| `GET` | `/api/gallery` | `HomeController@galleryJson` | Retorna los ítems de portafolio en formato JSON |
-| `POST` | `/api/booking` | `BookingController@store` | Recibe solicitud de cita y genera enlace a WhatsApp |
-
----
-
-##  Instrucciones para Subir a GitHub
-
-Si aún no has inicializado el repositorio Git en este proyecto, sigue estos pasos desde la terminal dentro de `C:\xampp\htdocs\mari-nails-spa`:
-
-```bash
-# 1. Inicializar el repositorio Git
-git init
-
-# 2. Agregar todos los archivos al área de preparación (staging)
-git add .
-
-# 3. Crear el primer commit con la estructura MVC
-git commit -m "feat: Arquitectura MVC con Composer, diseno boutique y fotos en alta resolucion"
-
-# 4. Renombrar la rama principal a main
-git branch -M main
-
-# 5. Vincular tu repositorio remoto de GitHub (reemplaza con tu URL real)
-git remote add origin https://github.com/Gabriellsanchezt/Mari-Nails-Spa.git
-
-# 6. Subir los cambios a GitHub
-git push -u origin main
-```
-
-> [!TIP]
-> El archivo `.gitignore` ya está preconfigurado para ignorar la carpeta `/vendor/`, archivos temporales y de configuración local, manteniendo el repositorio liviano y limpio.
-
----
-
-##  Créditos & Autoría
-
-* **Especialista & Fundadora**: Mariana Torres — *Mari Nails Spa*
-* **Ubicación**: Barquisimeto, Estado Lara, Venezuela.
-* **Instagram**: [@marinails.spa_](https://instagram.com/marinails.spa_)
-* **WhatsApp Oficial**: [+58 412-0549526](https://wa.me/584120549526)
-
----
-
-##  Licencia
-
-Este proyecto está bajo la Licencia **MIT**. Consulta el archivo `LICENSE` para más información.
+* **Salón:** Mari Nails Spa
+* **Especialista:** Mariana Torres
+* **Ciudad:** Barquisimeto, Estado Lara, Venezuela
+* **WhatsApp de Citas:** [+58 412-0549526](https://wa.me/584120549526)
+* **Instagram Oficial:** [@marinails.spa_](https://instagram.com/marinails.spa_)
+* **Ubicación en Google Maps:** [Ver mapa verificado](https://maps.app.goo.gl/xGjdVrHkoanV1gEPA)
